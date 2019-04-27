@@ -1,13 +1,23 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+			// Inserts seed entries
+			return knex('donation_details').insert([
+				{
+					id: 1,
+					business_id: 1,
+					volunteer_id: 1,
+					foodbank_id: 1,
+					donation_id: 1,
+					completed: true,
+					comment: 'dropped off to Mr. Wilson',
+				},
+				{
+					id: 2,
+					business_id: 1,
+					volunteer_id: 2,
+					foodbank_id: 2,
+					donation_id: 3,
+					completed: false,
+					comment: 'was closed at time of arrival.',
+				},
+			]);
 };

@@ -1,13 +1,23 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+			// Inserts seed entries
+			return knex('business').insert([
+				{
+					id: 1,
+					businessName: 'Publix',
+					phone: 4444444444,
+					businessAddr: '1 main st, miami fl, 32321',
+					email: 'support@publix.com',
+					password: 'pass',
+					usertype: 'business',
+				},
+				{
+					id: 2,
+					businessName: 'CVS',
+					phone: 2222222222,
+					businessAddr: '13 main st, miami fl, 32321',
+					email: 'support@cvs.com',
+					password: 'pass',
+					usertype: 'business',
+				},
+			]);
 };
