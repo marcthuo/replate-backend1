@@ -1,18 +1,23 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('volunteer', table => {
-		table.increments();
+	return knex.schema.createTable('volunteer', tbl => {
+		tbl.increments();
 
-		table.string('first_name', 255).notNullable();
-		table.string('last_name', 255).notNullable();
+		tbl.string('first_name', 255).notNullable();
 
-		table.string('address', 255).notNullable();
-		table.integer('phone', 255).notNullable();
-		table
+		tbl.string('last_name', 255).notNullable();
+
+		tbl.string('address', 255).notNullable();
+
+		tbl.integer('phone', 255).notNullable();
+
+		tbl
 			.string('email', 255)
 			.notNullable()
 			.unique();
-		table.string('password', 255).notNullable();
-		table.string('usertype', 255).notNullable();
+
+		tbl.string('password', 255).notNullable();
+
+		tbl.string('usertype', 255).notNullable();
 	});
 };
 

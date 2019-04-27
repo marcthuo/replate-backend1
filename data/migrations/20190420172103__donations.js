@@ -1,17 +1,19 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('donations', table => {
-		table.increments();
+	return knex.schema.createTable('donations', tbl => {
+		tbl.increments();
 
-		table
+		tbl
 			.string('name')
 			.notNullable()
 			.unique();
 
-		table.integer('quantity_lbs').notNullable();
-		table.varchar('comment').notNullable();
-		table.boolean('picked_up').notNullable();
+		tbl.integer('quantity_lbs').notNullable();
 
-		table
+		tbl.varchar('comment').notNullable();
+
+		tbl.boolean('picked_up').notNullable();
+
+		tbl
 			.integer('business_id')
 			.unsigned()
 			.references('id')
@@ -19,7 +21,7 @@ exports.up = function(knex, Promise) {
 			.onDelete('CASCADE')
 			.onUpdate('CASCADE');
 
-		table.timestamps(true, true);
+		tbl.timestamps(true, true);
 	});
 };
 

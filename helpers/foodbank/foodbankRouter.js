@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const restricted = require('../../middleware/restricted/restrictedMiddleware');
+const restricted = require('../../auth/middleware/restricted-middleware.js');
 
-const Foodbank = require('../foodbank/foodbankModel');
+const Foodbank = require('./foodbankModel.js');
 
 router.get('/',  (req, res) => {
 	Foodbank.find()

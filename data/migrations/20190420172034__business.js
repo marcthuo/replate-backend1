@@ -1,20 +1,24 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('business', table => {
-		table.increments();
+	return knex.schema.createTable('business', tbl => {
+		tbl.increments();
 
-		table
+		tbl
 			.string('businessName', 255)
 			.notNullable()
 			.unique();
 
-		table.string('businessAddr', 255).notNullable();
-		table.integer('phone', 255).notNullable();
-		table
+		tbl.string('businessAddr', 255).notNullable();
+	
+		tbl.integer('phone', 255).notNullable();
+
+		tbl
 			.string('email', 255)
 			.notNullable()
 			.unique();
-		table.string('password', 255).notNullable();
-		table.string('usertype', 255).notNullable();
+
+		tbl.string('password', 255).notNullable();
+		
+		tbl.string('usertype', 255).notNullable();
 	});
 };
 

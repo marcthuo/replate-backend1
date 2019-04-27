@@ -1,8 +1,8 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('donation_details', table => {
-		table.increments();
+	return knex.schema.createTable('donation_details', tbl => {
+		tbl.increments();
 
-		table
+		tbl
 			.integer('business_id')
 			.unsigned()
 			.references('id')
@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
 			.onUpdate('CASCADE')
 			.notNullable();
 
-		table
+		tbl
 			.integer('volunteer_id')
 			.unsigned()
 			.references('id')
@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
 			.onUpdate('CASCADE')
 			.notNullable();
 
-		table
+		tbl
 			.integer('foodbank_id')
 			.unsigned()
 			.references('id')
@@ -29,7 +29,7 @@ exports.up = function(knex, Promise) {
 			.onUpdate('CASCADE')
 			.notNullable();
 
-		table
+		tbl
 			.integer('donation_id')
 			.unsigned()
 			.references('id')
@@ -38,10 +38,11 @@ exports.up = function(knex, Promise) {
 			.onUpdate('CASCADE')
 			.notNullable();
 
-		table.boolean('completed').notNullable();
-		table.varchar('comment').notNullable();
+		tbl.boolean('completed').notNullable();
+		
+		tbl.varchar('comment').notNullable();
 
-		table.timestamps(true, true);
+		tbl.timestamps(true, true);
 	});
 };
 

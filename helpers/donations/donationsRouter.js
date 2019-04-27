@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const restricted = require('../../middleware/restricted/restrictedMiddleware');
+const restricted = require('../../auth/middleware/restricted-middleware.js');
 
 const Donations = require('./donationsModel');
 // const DonationDetails = require('../');

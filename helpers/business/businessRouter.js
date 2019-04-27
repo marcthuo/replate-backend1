@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
 const Business = require('./businessModel');
-const restricted = require('../../middleware/restricted/restrictedMiddleware');
-const checkType = require('../../middleware/userType/checkType');
+const restricted = require('../../auth/middleware/restricted-middleware.js');
+const checkType = require('../../auth/middleware/checkType-middleware.js');
 
 router.get('/',  (req, res) => {
 	Business.find()
