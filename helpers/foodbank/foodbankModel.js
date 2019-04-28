@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function find() {
-	return db('foodbank').select('id', 'name');
+	return db('foodbank');
 }
 
 function findBy(filter) {

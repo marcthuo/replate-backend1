@@ -14,7 +14,7 @@ module.exports = {
 // 	.select('v.first_name', 'v.last_name');
 
 function find() {
-	return db('volunteer').select('id', 'first_name');
+	return db('volunteer')
 }
 
 function remove(id) {

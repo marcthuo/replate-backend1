@@ -12,6 +12,14 @@ router.get('/',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
+router.post('/', (req, res) => {
+	Volunteer.add(req.body)
+		.then(newVolunteer => {
+			res.json({ newVolunteer });
+		})
+		.catch(err => res.send(err));
+});
+
 router.put('/:id',  (req, res) => {
 	Volunteer.update(req.params.id, edits)
 		.then(updatedVolunteer => {

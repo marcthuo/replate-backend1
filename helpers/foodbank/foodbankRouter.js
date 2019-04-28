@@ -12,6 +12,14 @@ router.get('/',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
+router.post('/', (req, res) => {
+	Foodbank.add(req.body)
+		.then(newFoodbank => {
+			res.json({ newFoodbank });
+		})
+		.catch(err => res.send(err));
+});
+
 router.put('/:id',  (req, res) => {
 	Foodbank.update(req.params.id, edits)
 		.then(updatedFoodbank => {

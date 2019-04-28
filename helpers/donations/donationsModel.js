@@ -10,7 +10,7 @@ module.exports = {
 };
 
 function find() {
-	return db('donations').select('id', 'name');
+	return db('donations');
 }
 // function findByUser(id) {
 // 	const donations = db('donation_details as d')

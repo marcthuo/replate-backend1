@@ -13,6 +13,15 @@ router.get('/', (req, res) => {
 		})
 		.catch(err => res.send(err));
 });
+
+router.post('/', (req, res) => {
+	Donations.add(req.body)
+		.then(newDonations => {
+			res.json({ newDonations });
+		})
+		.catch(err => res.send(err));
+});
+
 router.put('/:id', restricted, (req, res) => {
 	Donations.update(req.params.id, edits)
 		.then(updatedDonations => {

@@ -20,6 +20,14 @@ router.get('/:id',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
+router.post('/', (req, res) => {
+	Business.add(req.body)
+		.then(business => {
+			res.json({ business });
+		})
+		.catch(err => res.send(err));
+});
+
 // router.get('/:id/donations', restricted, (req, res) => {
 // 	Business.findById(req.params.id)
 // 		.then(business => {

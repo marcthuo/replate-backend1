@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const secrets = require('../../config/secrets');
+const secrets = require('../../config/secrets.js');
 
 module.exports = (req, res, next) => {
 	const token = req.headers.authorization;
@@ -11,12 +11,11 @@ module.exports = (req, res, next) => {
 				res.status(401).json('invalid token');
 			} else {
 				req.decodedJwt = decodedToken;
+				console.log('decoded token', req.decodedJwt);
 				next();
 			}
 		});
 	} else {
-		res
-			.status(401)
-			.json('Unauthorized user. please login with correct credentials');
+		res.status(401).json('Unauthorized user. please login with correct credentials');
 	}
 };
