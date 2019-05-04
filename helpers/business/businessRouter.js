@@ -2,9 +2,9 @@ const router = require('express').Router();
 
 const Business = require('./businessModel');
 const restricted = require('../../auth/middleware/restricted-middleware.js');
-const checkType = require('../../auth/middleware/checkType-middleware.js');
+// const checkType = require('../../auth/middleware/checkType-middleware.js');
 
-router.get('/',  (req, res) => {
+router.get('/', restricted, (req, res) => {
 	Business.find()
 		.then(businesses => {
 			res.json({ businesses });
@@ -12,7 +12,7 @@ router.get('/',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.get('/:id',  (req, res) => {
+router.get('/:id', restricted, (req, res) => {
 	Business.findById(req.params.id)
 		.then(business => {
 			res.json({ business });
@@ -20,7 +20,7 @@ router.get('/:id',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.post('/', (req, res) => {
+router.post('/', restricted, (req, res) => {
 	Business.add(req.body)
 		.then(business => {
 			res.json({ business });
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 // 		.catch(err => res.send(err));
 // });
 
-router.put('/:id',  (req, res) => {
+router.put('/:id', restricted, (req, res) => {
 	Business.update(req.params.id, edits)
 		.then(updatedBusiness => {
 			res.json({ updatedBusiness });
@@ -44,7 +44,7 @@ router.put('/:id',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.delete('/:id',  async (req, res) => {
+router.delete('/:id', restricted, async (req, res) => {
 	try {
 		const deletedBusiness = await Business.remove(req.params.id);
 		res.status(200).json(deletedBusiness);

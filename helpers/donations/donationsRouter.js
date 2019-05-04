@@ -6,7 +6,7 @@ const Donations = require('./donationsModel');
 // const DonationDetails = require('../');
 
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
 	Donations.find()
 		.then(donation => {
 			res.json({ donation });
@@ -14,7 +14,15 @@ router.get('/', (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.post('/', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
+	Donations.findById(req.params.id)
+		.then(donation => {
+			res.json({ donation });
+		})
+		.catch(err => res.send(err));
+});
+
+router.post('/', restricted, (req, res) => {
 	Donations.add(req.body)
 		.then(newDonations => {
 			res.json({ newDonations });
@@ -30,7 +38,7 @@ router.put('/:id', restricted, (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', restricted, async (req, res) => {
 	try {
 		const deletedDonations = await Donations.remove(req.params.id);
 		res.status(200).json(deletedDonations);

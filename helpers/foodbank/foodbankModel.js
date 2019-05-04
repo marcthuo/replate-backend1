@@ -37,12 +37,12 @@ function findByEmail(email) {
 }
 
 function remove(id) {
-	return db('volunteer')
+	return db('foodbank')
 		.where('id', id)
 		.del();
 }
 function update(id, changes) {
-	return db('volunteer')
+	return db('foodbank')
 		.where({ id })
 		.update(changes);
 }

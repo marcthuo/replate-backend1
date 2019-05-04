@@ -4,7 +4,7 @@ const restricted = require('../../auth/middleware/restricted-middleware.js');
 
 const Foodbank = require('./foodbankModel.js');
 
-router.get('/',  (req, res) => {
+router.get('/', restricted, (req, res) => {
 	Foodbank.find()
 		.then(foodbank => {
 			res.json({ foodbank, decodedToken: req.decodedJwt });
@@ -12,7 +12,15 @@ router.get('/',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.post('/', (req, res) => {
+router.get('/:id', restricted, (req, res) => {
+	Foodbank.findById(req.params.id)
+		.then(foodbank => {
+			res.json({ foodbank });
+		})
+		.catch(err => res.send(err));
+});
+
+router.post('/', restricted, (req, res) => {
 	Foodbank.add(req.body)
 		.then(newFoodbank => {
 			res.json({ newFoodbank });
@@ -20,7 +28,7 @@ router.post('/', (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.put('/:id',  (req, res) => {
+router.put('/:id', restricted, (req, res) => {
 	Foodbank.update(req.params.id, edits)
 		.then(updatedFoodbank => {
 			res.json({ updatedFoodbank });
@@ -28,7 +36,7 @@ router.put('/:id',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.delete('/:id',  async (req, res) => {
+router.delete('/:id', restricted, async (req, res) => {
 	try {
 		const deletedFoodbank = await Foodbank.remove(req.params.id);
 		res.status(200).json(deletedFoodbank);

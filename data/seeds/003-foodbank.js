@@ -1,7 +1,8 @@
 exports.seed = function(knex, Promise) {
 	// Inserts seed entries
 	return knex('foodbank').insert([
-	{id: 1,
+	{	
+		id: 1,
 		businessName: 'VFW',
 		businessAddr: '3 west oaks ln, miami fl, 34322',
 		phone: 4442222223,
