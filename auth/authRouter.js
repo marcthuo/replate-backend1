@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
 		case 'volunteer':
 			try {
 				const newVolunteer = await Volunteer.add(user);
-				// const token = tokenData(newVolunteer);
+				const token = tokenData(newVolunteer);
 				res.status(201).json({ newVolunteer });
 			} catch (error) {
 				res.status(500).json(error);
@@ -26,7 +26,7 @@ router.post('/register', async (req, res) => {
 		case 'business':
 			try {
 				const newBusiness = await Business.add(user);
-				// const token = tokenData(newBusiness);
+				const token = tokenData(newBusiness);
 				res.status(201).json({ newBusiness});
 			} catch (error) {
 				res.status(500).json(error);
@@ -36,7 +36,7 @@ router.post('/register', async (req, res) => {
 		case 'foodbank':
 			try {
 				const newFoodbank = await Foodbank.add(user);
-				// const token = tokenData(newFoodbank);
+				const token = tokenData(newFoodbank);
 				res.status(201).json({ newFoodbank });
 			} catch (error) {
 				res.status(500).json(error);
