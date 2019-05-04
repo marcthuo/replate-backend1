@@ -53,7 +53,10 @@ router.post('/login', async (req, res) => {
 
 	try {
 		const existingUser = await Volunteer.findByEmail(email);
-		if (existingUser && bcrypt.compareSync(password, existingUser.password)) {
+		if (
+			existingUser && 
+			bcrypt.compareSync(password, existingUser.password)
+		) {
 			const token = tokenData(existingUser);
 			res.status(200).json({
 				message: `Welcome ${existingUser.first_name}!`,
