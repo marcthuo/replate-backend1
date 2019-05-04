@@ -4,7 +4,7 @@ const Business = require('./businessModel');
 const restricted = require('../../auth/middleware/restricted-middleware.js');
 const checkType = require('../../auth/middleware/checkType-middleware.js');
 
-router.get('/',  (req, res) => {
+router.get('/', restricted, checkType, (req, res) => {
 	Business.find()
 		.then(businesses => {
 			res.json({ businesses });
@@ -12,7 +12,7 @@ router.get('/',  (req, res) => {
 		.catch(err => res.send(err));
 });
 
-router.get('/:id',  (req, res) => {
+router.get('/:id', restricted, (req, res) => {
 	Business.findById(req.params.id)
 		.then(business => {
 			res.json({ business });
