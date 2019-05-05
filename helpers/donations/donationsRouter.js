@@ -25,7 +25,7 @@ router.get('/:id', restricted, (req, res) => {
 router.post('/', restricted, (req, res) => {
 	Donations.add(req.body)
 		.then(newDonations => {
-			res.json({ newDonations });
+			res.json({ newDonations, decodedToken: req.decodedJwt });
 		})
 		.catch(err => res.send(err));
 });
