@@ -6,8 +6,8 @@ const restricted = require('../../auth/middleware/restricted-middleware.js');
 
 router.get('/', restricted, (req, res) => {
 	Business.find()
-		.then(businesses => {
-			res.json({ businesses });
+		.then(business => {
+			res.json({ business, decodedToken: req.decodedJwt });
 		})
 		.catch(err => res.send(err));
 });

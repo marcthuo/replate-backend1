@@ -4,8 +4,7 @@ exports.up = function(knex, Promise) {
 
 		tbl
 			.string('businessName', 255)
-			.notNullable()
-			
+			.notNullable();
 
 		tbl.string('businessAddr', 255).notNullable();
 

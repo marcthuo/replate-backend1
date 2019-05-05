@@ -2,12 +2,12 @@ const router = require('express').Router();
 
 const restricted = require('../../auth/middleware/restricted-middleware.js');
 
-const Volunteer = require('./volunteerModel');
+const Volunteer = require('./volunteerModel.js');
 
 router.get('/', restricted, (req, res) => {
 	Volunteer.find()
-		.then(volunteers => {
-			res.json({ volunteers });
+		.then(volunteer => {
+			res.json({ volunteer, decodedToken: req.decodedJwt });
 		})
 		.catch(err => res.send(err));
 });

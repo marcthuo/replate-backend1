@@ -8,8 +8,8 @@ const Donations = require('./donationsModel');
 
 router.get('/', restricted, (req, res) => {
 	Donations.find()
-		.then(donation => {
-			res.json({ donation });
+		.then(donations => {
+			res.json({ donations, decodedToken: req.decodedJwt });
 		})
 		.catch(err => res.send(err));
 });
