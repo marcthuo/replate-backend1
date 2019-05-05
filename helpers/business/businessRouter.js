@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const Business = require('./businessModel');
+const Business = require('./businessModel.js');
 const restricted = require('../../auth/middleware/restricted-middleware.js');
 // const checkType = require('../../auth/middleware/checkType-middleware.js');
 
